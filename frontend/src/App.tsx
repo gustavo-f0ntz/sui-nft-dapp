@@ -11,15 +11,26 @@ function App() {
   
   // Estado para o formulário de NFT
   const [nftForm, setNftForm] = useState({
-    packageId: '0x6ef9bb2980c02efad317bd0d32c27b9b22e51c6440a9bd10f05d74c4dda66e94',
-    name: 'NFT mints by f0ntz',
+    packageId: '',
+    name: 'My Awesome NFT',
     description: 'Created with Sui blockchain technology',
     imageUrl: 'https://images.unsplash.com/photo-1634973357973-f2ed2657db3c?w=400'
   });
 
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true); // Iniciar aberto para mostrar que precisa configurar
 
   function handleMint() {
+    // Validação do Package ID
+    if (!nftForm.packageId || nftForm.packageId.trim() === '') {
+      alert(' Please enter your Package ID first!\n\nYou need to deploy your smart contract and get the Package ID.');
+      return;
+    }
+
+    if (!nftForm.packageId.startsWith('0x') || nftForm.packageId.length < 10) {
+      alert(' Invalid Package ID format!\n\nPackage ID should start with "0x" and be a valid Sui address.');
+      return;
+    }
+
     const txb = new Transaction();
 
     txb.moveCall({
@@ -130,14 +141,21 @@ function App() {
                 {showForm ? (
                   <div className="nft-form">
                     <div className="form-group">
-                      <label className="form-label">Package ID:</label>
+                      <label className="form-label">
+                         Package ID: 
+                        <span className="required">*</span>
+                        <small className="form-hint">Deploy your smart contract first to get this ID</small>
+                      </label>
                       <input
                         type="text"
-                        className="form-input"
+                        className={`form-input ${!nftForm.packageId ? 'form-input-required' : ''}`}
                         value={nftForm.packageId}
                         onChange={(e) => handleInputChange('packageId', e.target.value)}
-                        placeholder="0x..."
+                        placeholder="0x1234567890abcdef... (required)"
                       />
+                      {!nftForm.packageId && (
+                        <small className="form-error"> Package ID is required to mint NFTs</small>
+                      )}
                     </div>
                     
                     <div className="form-group">
@@ -185,7 +203,12 @@ function App() {
                     </div>
                     <div className="mint-info-item">
                       <span className="mint-info-label">Package ID:</span>
-                      <span className="mint-info-value">{nftForm.packageId.slice(0, 10)}...{nftForm.packageId.slice(-8)}</span>
+                      <span className={`mint-info-value ${!nftForm.packageId ? 'missing-value' : ''}`}>
+                        {nftForm.packageId 
+                          ? `${nftForm.packageId.slice(0, 10)}...${nftForm.packageId.slice(-8)}`
+                          : '❌ Not configured (click ⚙️ to set)'
+                        }
+                      </span>
                     </div>
                     <div className="mint-info-item">
                       <span className="mint-info-label">Network:</span>
@@ -197,9 +220,9 @@ function App() {
                 <button 
                   className="mint-button"
                   onClick={handleMint} 
-                  disabled={isPending}
+                  disabled={isPending || !nftForm.packageId}
                 >
-                  {isPending ? 'Minting...' : 'Mint NFT Now!'}
+                  {isPending ? 'Minting...' : !nftForm.packageId ? 'Configure Package ID First' : 'Mint NFT Now!'}
                 </button>
               </div>
             </div>
