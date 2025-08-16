@@ -1,12 +1,444 @@
-.app-header {
-  border-bottom: 1px solid var(--gray-a2);
+/* Reset e configurações globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Container principal */
+.app {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.app-main {
-  padding: 20px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
 }
 
-.app-divider {
-  margin: 20px 0;
+.logo-icon {
+  color: #3b82f6;
+}
+
+/* Header Connect Button Styling */
+.header-connect-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wallet-icon {
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+}
+
+.header button {
+  background: #1e293b !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.header button:hover {
+  background: #334155 !important;
+}
+
+/* Wallet Address in Header */
+.wallet-address-header {
+  background: #1e293b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: monospace;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 2rem 2rem;
+}
+
+.content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Welcome section */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Card de conexão */
+.connect-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.connect-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.connect-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.connect-description {
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* Botão grande no card de conexão */
+.connect-card button {
+  width: 100% !important;
+  background: #1e293b !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.875rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.connect-card button:hover {
+  background: #334155 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Estado conectado */
+.connected-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.connected-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.connected-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.wallet-address {
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 0.5rem;
+  border-radius: 6px;
+  word-break: break-all;
+}
+
+/* Card de mint */
+.mint-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mint-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.mint-description {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.mint-info {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.mint-info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.mint-info-item:last-child {
+  margin-bottom: 0;
+}
+
+.mint-info-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.mint-info-value {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.mint-button {
+  width: 100%;
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mint-button:hover:not(:disabled) {
+  background: #334155;
+  transform: translateY(-1px);
+}
+
+.mint-button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Settings Button */
+.mint-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.settings-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.settings-button:hover {
+  background: #f1f5f9;
+}
+
+.settings-icon {
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+}
+
+/* NFT Form */
+.nft-form {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+  background: white;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Ícones */
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-blue {
+  color: #3b82f6;
+}
+
+/* Connected Wallet Card */
+.connected-card {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.connected-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.connected-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.wallet-address {
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #64748b;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  word-break: break-all;
+}
+
+/* Media Queries para título responsivo */
+@media (max-width: 768px) {
+  .title {
+    white-space: normal;
+    font-size: 2.2rem;
+  }
+  
+  .content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .header {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+    white-space: normal;
+  }
+  
+  .connect-card,
+  .connected-card,
+  .mint-card {
+    padding: 1.5rem;
+  }
+  
+  .main {
+    padding: 1rem;
+  }
 }
