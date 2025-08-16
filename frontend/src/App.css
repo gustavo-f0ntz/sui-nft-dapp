@@ -1,0 +1,12 @@
+.app-header {
+  border-bottom: 1px solid var(--gray-a2);
+  align-items: center;
+}
+
+.app-main {
+  padding: 20px;
+}
+
+.app-divider {
+  margin: 20px 0;
+}
