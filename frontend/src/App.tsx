@@ -14,11 +14,11 @@ function App() {
     const txb = new Transaction();
 
     txb.moveCall({
-      target: `0x6ef9bb2980c02efad317bd0d32c27b9b22e51c6440a9bd10f05d74c4dda66e94::meu_nft::mint`,
+      target: `0xSEU_PACKAGE_ID::meu_nft::mint`,
       arguments: [
-        txb.pure.string('Chef DJ'),
-        txb.pure.string('Chef DJ NFT #01'),
-        txb.pure.string('https://img.freepik.com/vetores-premium/nft-pixel-art-cryptopunks-estilo-104_621504-2.jpg'),
+        txb.pure.string('My First NFT'),
+        txb.pure.string('Created with Sui blockchain technology'),
+        txb.pure.string('https://images.unsplash.com/photo-1634973357973-f2ed2657db3c?w=400'),
       ],
     });
 
