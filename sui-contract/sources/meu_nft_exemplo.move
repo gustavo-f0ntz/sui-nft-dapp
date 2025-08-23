@@ -1,4 +1,3 @@
-_
 module meu_nft_exemplo::meu_nft {
 
     use sui::display;
